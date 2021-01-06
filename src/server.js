@@ -8,8 +8,6 @@ const app = express();
 app.use("/", routes);
 app.use(errorMiddleware);
 
-const port = process.env.PORT || config.server.port;
-
-app.listen(port, () => {
-	console.log(`Example app listening at http://localhost:${port}`);
+const server = app.listen(config.server.port, () => {
+	console.log(`Example app listening at http://localhost:${server.address().port}`);
 });

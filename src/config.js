@@ -1,6 +1,6 @@
 module.exports = {
 	server: {
-		port: 3000,
+		port: process.env.PORT || 3000,
 	},
 	/**
 	 * These options will be used to configure the cors middleware to add
