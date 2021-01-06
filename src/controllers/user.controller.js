@@ -29,8 +29,19 @@ function updateUser(request, response) {
 	response.status(200).json(updatedUser);
 }
 
+function deleteUser(request, response) {
+	const userId = request.params.user_id;
+	const deletedUser = userModel.delete(userId);
+	if (!deletedUser) {
+		throw new Error("Error deleting user");
+	}
+
+	response.status(200);
+}
+
 module.exports = {
 	getUser: [getUser],
 	createUser: [validate({ body: userSchema }), createUser],
 	updateUser: [validate({ body: userSchema }), updateUser],
+	deleteUser: [deleteUser],
 };

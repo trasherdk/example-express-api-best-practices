@@ -13,5 +13,6 @@ router.use(bodyParserMiddleware.json());
 router.post("/user", userController.createUser);
 router.get("/user/:user_id", userController.getUser);
 router.put("/user/:user_id", userController.updateUser);
+router.delete("/user/:user_id", userController.deleteUser);
 
 module.exports = router;

@@ -25,7 +25,7 @@ npm start
 ## Making API requests
 
 - You can make `POST` requests to http://localhost:3000/user
-- You can make `GET` and`PUT` requests to http://localhost:3000/user/1234
+- You can make `GET`, `PUT` and `DELETE` requests to http://localhost:3000/user/1234
 
 Try a `POST` request to create a new user:
 

@@ -17,4 +17,7 @@ module.exports = {
 	update(userId, user) {
 		return user;
 	},
+	delete(userId) {
+		return true;
+	},
 };
