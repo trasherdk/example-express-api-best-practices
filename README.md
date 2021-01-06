@@ -61,3 +61,4 @@ and applied in this example application are:
 - [body-parser](https://github.com/expressjs/body-parser) - "Node.js body parsing middleware"
 - [cors](https://github.com/expressjs/cors) - "CORS is a node.js package for
   providing a Connect/Express middleware that can be used to enable CORS with various options."
+- [http-errors](https://www.npmjs.com/package/http-errors) - "Create HTTP errors for Express, Koa, Connect, etc. with ease."
