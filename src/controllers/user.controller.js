@@ -1,7 +1,21 @@
+const createHttpError = require("http-errors");
+
 const validate = require("../middleware/validate.js");
 
 const userSchema = require("../schemas/user.schema.js");
 const userModel = require("../models/user.model.js");
+
+function validateUserId(request, response, next) {
+	const userIdIsNumeric = !isNaN(request.params.user_id);
+
+	if (!userIdIsNumeric) {
+		const error = new createHttpError.BadRequest();
+
+		return next(error);
+	}
+
+	next();
+}
 
 function getUser(request, response) {
 	const userId = request.params.user_id;
@@ -40,8 +54,8 @@ function deleteUser(request, response) {
 }
 
 module.exports = {
-	getUser: [getUser],
+	getUser: [validateUserId, getUser],
 	createUser: [validate({ body: userSchema }), createUser],
-	updateUser: [validate({ body: userSchema }), updateUser],
-	deleteUser: [deleteUser],
+	updateUser: [validateUserId, validate({ body: userSchema }), updateUser],
+	deleteUser: [validateUserId, deleteUser],
 };

@@ -1,7 +1,7 @@
-# example-express-api-best-practices
+# Express API Best Practices Example Application
 
-> This is an example app created for the blog post
-'[5 best practices for building a modern API with Express](https://simonplend.com/5-best-practices-for-building-a-modern-api-with-express/)'.
+> This is an example Express API application. It combines techniques from the blog posts
+'[5 best practices for building a modern API with Express](https://simonplend.com/5-best-practices-for-building-a-modern-api-with-express/)' and '[Send awesome structured error responses with Express](https://simonplend.com/send-awesome-structured-error-responses-with-express/)'.
 
 _Note: A real application should have plenty of tests so that you can have confidence
 in what you're releasing. This application does not have tests as it's been been
@@ -27,7 +27,7 @@ npm start
 - You can make `POST` requests to http://localhost:3000/user
 - You can make `GET`, `PUT` and `DELETE` requests to http://localhost:3000/user/1234
 
-Try a `POST` request to create a new user:
+Try an invalid `POST` request to create a new user:
 
 ```bash
 curl -v -X POST \
@@ -38,10 +38,16 @@ curl -v -X POST \
 
 _Note: No data sent to the API is stored by this example application._
 
+Try a `GET` request with an invalid user ID:
+
+```bash
+curl -v http://localhost:3000/user/abc
+```
+
 ## Best practices
 
-The five best practices which are described
-[in my blog post](https://simonplend.com/5-best-practices-for-building-a-modern-api-with-express/)
+The five best practices which are described in my
+[Express best practices blog post](https://simonplend.com/5-best-practices-for-building-a-modern-api-with-express/)
 and applied in this example application are:
 
 1. Enable the full use of `async` and `await`
@@ -49,6 +55,9 @@ and applied in this example application are:
 3. Use an existing format for error responses
 4. Send CORS response headers so web pages can call your API
 5. Separate your concerns
+
+This application also implements the techniques for sending "problem details"
+error responses which are described in my '[Send awesome structured error responses with Express](https://simonplend.com/send-awesome-structured-error-responses-with-express/)' blog post.
 
 ## Libraries and frameworks used
 

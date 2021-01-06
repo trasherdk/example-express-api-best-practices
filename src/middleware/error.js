@@ -13,7 +13,7 @@ module.exports = function errorMiddleware(error, request, response, next) {
 		response.set("Content-Type", "application/problem+json");
 
 		response.status(400).json({
-			type: "https://example.com/validation-errors/user",
+			type: "https://example-api.com/problem/invalid-user-object",
 			title: "The request parameters were invalid.",
 			invalid_properties: error.validationErrors.body.map((error) => {
 				return {
