@@ -1,6 +1,14 @@
 const { ValidationError } = require("express-json-validator-middleware");
 
-module.exports = function errororMiddleware(error, request, response, next) {
+module.exports = function errorMiddleware(error, request, response, next) {
+	/**
+	 * If response headers have already been sent,
+	 * delegate to the default Express error handler.
+	 */
+	if (response.headersSent) {
+		return next(error);
+	}
+
 	if (error instanceof ValidationError) {
 		response.set("Content-Type", "application/problem+json");
 
